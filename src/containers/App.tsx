@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import './App.css';
+import './App.scss';
 
 class App extends Component {
   render() {
-    var hW :string = 'Hello world! Yeah!';
+    var hW: string = 'Hello world! Yeah!';
 
     return (
       <div className="App">
