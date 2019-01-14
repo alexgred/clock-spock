@@ -1,0 +1,16 @@
+{
+  "easycompile.sass": {
+    "out": false,
+    "sourceMap": false
+  },
+  "easycompile.less": {
+    "out": false,
+    "sourceMap": false
+  },
+  "easycompile.typescript": {
+    "outdir": false,
+    "outfile": false,
+    "sourceMap": false
+  },
+  "tslint.alwaysShowStatus": true,
+}
