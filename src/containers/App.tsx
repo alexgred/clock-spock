@@ -2,27 +2,23 @@ import React, { Component } from 'react';
 import logo from '../assets/logo.svg';
 import './App.scss';
 
+import Clock from '../components/Clock/Clock';
+import ButtonGroup from '../components/ButtonGroup/ButtonGroup';
+
 class App extends Component {
+
   render() {
-    var hW: string = 'Hello world! Yeah!';
 
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.tsx</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          <span>{ hW }</span>
+      <div className="app">
+        <header className="app__header">
+          <img src={logo} className="app__logo" alt="logo" />
         </header>
+
+        <div className="app__content">
+          <Clock />
+          <ButtonGroup />
+        </div>
       </div>
     );
   }
