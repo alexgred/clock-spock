@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './ButtonGroup.scss';
 
-import ButtonDiv from '../ButtonDiv/ButtonDiv';
+import Button from '../ButtonDiv/ButtonDiv';
 
 class ButtonGroup extends Component {
 
@@ -10,8 +10,8 @@ class ButtonGroup extends Component {
     return (
 
       <div className="button-group">
-        <ButtonDiv buttonType="pause" classes="button-group__item" />
-        <ButtonDiv buttonType="play" classes="button-group__item" />
+        <Button buttonType="pause" classes="button-group__item" />
+        <Button buttonType="play" classes="button-group__item" />
       </div>
     );
   }
