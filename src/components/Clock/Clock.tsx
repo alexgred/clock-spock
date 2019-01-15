@@ -1,21 +1,22 @@
 import React, { Component } from 'react';
 
-interface IClockState {
-  hours: number;
-  minutes: number;
-  seconds: number;
+
+interface IClockProps {
+  interval: number;
 }
 
-class Clock extends Component<Object, IClockState> {
+interface IClockState {
+  time: string;
+}
+
+class Clock extends Component<IClockProps, IClockState> {
   private intervalId?: number;
 
-  constructor(props: Object) {
+  constructor(props: IClockProps) {
     super(props);
     
     this.state = {
-      hours: 0,
-      minutes: 0,
-      seconds: 0
+      time: ''
     };
 
   }
@@ -26,11 +27,9 @@ class Clock extends Component<Object, IClockState> {
       let date = new Date();
 
       this.setState({
-        hours: date.getHours(),
-        minutes: date.getMinutes(),
-        seconds: date.getSeconds()
+        time: date.toLocaleTimeString('en-Gb')
       });
-    }, 500);
+    }, this.props.interval);
   }
 
   componentWillUnmount() {
@@ -39,14 +38,12 @@ class Clock extends Component<Object, IClockState> {
 
   render() {
 
-    let {hours, minutes, seconds} = this.state;
+    let {time} = this.state;
 
     return(
 
       <div className="clock">
-        <div className="clock__item clock__hours">{ hours }</div>
-        <div className="clock__item clock__minutes">{ minutes }</div>
-        <div className="clock__item clock__seconds">{ seconds }</div>
+        <div className="clock__item clock__time">{time}</div>
       </div>
     );
   }
