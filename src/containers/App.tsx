@@ -4,6 +4,7 @@ import './App.scss';
 
 import Clock from '../components/Clock/Clock';
 import ButtonGroup from '../components/ButtonGroup/ButtonGroup';
+import Stopwatch from '../components/Stopwatch/Stopwatch';
 
 class App extends Component {
 
@@ -18,6 +19,7 @@ class App extends Component {
         <div className="app__content">
           <Clock interval={500} />
           <ButtonGroup />
+          <Stopwatch />
         </div>
       </div>
     );
