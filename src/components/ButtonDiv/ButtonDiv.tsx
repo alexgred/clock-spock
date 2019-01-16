@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import './ButtonDiv.scss';
 
 
-interface IButtonDiv { 
+interface IButtonDivProps { 
   buttonType: string;
   classes: string;
 }
 
 
-class ButtonDiv extends Component<IButtonDiv, {}> {
+class ButtonDiv extends Component<IButtonDivProps, Object> {
 
   render() {
 
