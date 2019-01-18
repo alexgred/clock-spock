@@ -17,8 +17,7 @@ class App extends Component {
         </header>
 
         <div className="app__content">
-          <Clock interval={500} />
-          <ButtonGroup />
+          <Clock />
           <Stopwatch />
         </div>
       </div>

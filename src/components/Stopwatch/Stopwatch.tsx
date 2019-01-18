@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 
+import ClockFace from '../ClockFace/ClockFace';
+import Button from '../ButtonDiv/ButtonDiv';
+
 
 interface IStopWatchState {
   time: number;
@@ -22,26 +25,37 @@ class Stopwatch extends Component<Object, IStopWatchState> {
     };
   }
 
+  stopwatchStop(): void {
+
+  }
+
   componentDidMount() {
     let incTime = this.state.time;
 
     this.intervalId = window.setInterval(() => {
 
       this.setState({
-        time: incTime++,
-        hours: incTime % 3600,
-        minutes: incTime % 60
+        time: ++incTime,
+        hours: Math.floor(incTime / 3600),
+        minutes: Math.floor(incTime / 60),
+        seconds: incTime % 60
       });
     }, 1000);
   }
 
+  componentWillUnmount() {
+    clearInterval(this.intervalId);
+  }
+
   render() {
 
-    let {hours, minutes, time} = this.state;
+    let { hours, minutes, seconds } = this.state;
 
     return(
       <div>
-        <div>{hours}:{minutes}:{time}</div>
+        <ClockFace hours={hours} minutes={minutes} seconds={seconds} />
+        <Button buttonType="start" />
+        <Button buttonType="stop" />
       </div> 
     );
   }

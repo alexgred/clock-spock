@@ -4,7 +4,7 @@ import './ButtonDiv.scss';
 
 interface IButtonDivProps { 
   buttonType: string;
-  classes: string;
+  classes?: string;
 }
 
 
