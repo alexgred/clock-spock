@@ -1,18 +1,14 @@
 import React, { Component } from 'react';
 
 
-interface IClockProps {
-  interval: number;
-}
-
 interface IClockState {
   time: string;
 }
 
-class Clock extends Component<IClockProps, IClockState> {
+class Clock extends Component<Object, IClockState> {
   private intervalId?: number;
 
-  constructor(props: IClockProps) {
+  constructor(props: Object) {
     super(props);
     
     this.state = {
@@ -29,7 +25,7 @@ class Clock extends Component<IClockProps, IClockState> {
       this.setState({
         time: date.toLocaleTimeString('en-Gb')
       });
-    }, this.props.interval);
+    }, 1000);
   }
 
   componentWillUnmount() {
@@ -38,7 +34,7 @@ class Clock extends Component<IClockProps, IClockState> {
 
   render() {
 
-    let {time} = this.state;
+    let { time } = this.state;
 
     return(
 
