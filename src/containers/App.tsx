@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import logo from '../assets/logo.svg';
 import './App.scss';
 
-import Clock from '../components/Clock/Clock';
-import ButtonGroup from '../components/ButtonGroup/ButtonGroup';
+import Header from '../components/Header/Header';
+import Footer from '../components/Footer/Footer';
 import Stopwatch from '../components/Stopwatch/Stopwatch';
+
 
 class App extends Component {
 
@@ -12,14 +12,13 @@ class App extends Component {
 
     return (
       <div className="app">
-        <header className="app__header">
-          <img src={logo} className="app__logo" alt="logo" />
-        </header>
+        <Header />
 
-        <div className="app__content">
-          <Clock />
+        <div className="app__content content">
           <Stopwatch />
         </div>
+
+        <Footer />
       </div>
     );
   }
