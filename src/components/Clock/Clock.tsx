@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Clock.scss';
 
 
 interface IClockState {
