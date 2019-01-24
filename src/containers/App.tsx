@@ -3,7 +3,7 @@ import './App.scss';
 
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
-import Stopwatch from '../components/Stopwatch/Stopwatch';
+import Stopwatch from './Stopwatch/Stopwatch';
 
 
 class App extends Component {
