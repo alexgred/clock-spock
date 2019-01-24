@@ -9,6 +9,7 @@ interface IStopWatchState {
   hours: number;
   minutes: number;
   seconds: number;
+  status: boolean;
 }
 
 class Stopwatch extends Component<Object, IStopWatchState> {
@@ -21,41 +22,58 @@ class Stopwatch extends Component<Object, IStopWatchState> {
       time: 0,
       hours: 0,
       minutes: 0,
-      seconds: 0
+      seconds: 0,
+      status: false
     };
   }
 
-  stopwatchStop(): void {
+  stop(): void {
 
+    clearInterval(this.intervalId);
+    this.setState({status: false});
   }
 
-  componentDidMount() {
-    let incTime = this.state.time;
+  start(): void {
+
+    this.setState({status: true});
 
     this.intervalId = window.setInterval(() => {
 
+      let time = this.state.time;
+
       this.setState({
-        time: ++incTime,
-        hours: Math.floor(incTime / 3600),
-        minutes: Math.floor(incTime / 60),
-        seconds: incTime % 60
+        time: ++time,
+        hours: Math.floor(time / 3600),
+        minutes: Math.floor(time / 60),
+        seconds: time % 60
       });
     }, 1000);
   }
 
+  reset(): void {
+
+    this.setState({
+      time: 0,
+      hours: 0,
+      minutes: 0,
+      seconds: 0,
+      status: false
+    });
+  }
+
   componentWillUnmount() {
-    clearInterval(this.intervalId);
+    this.stop();
   }
 
   render() {
 
-    let { hours, minutes, seconds } = this.state;
+    let { hours, minutes, seconds, status } = this.state;
 
     return(
       <div>
         <ClockFace hours={hours} minutes={minutes} seconds={seconds} />
-        <Button buttonType="start" />
-        <Button buttonType="stop" />
+        <Button buttonType={status ? 'pause' : 'start'} onClick={() => status ? this.stop() : this.start()} />
+        <Button buttonType="reset" onClick={() => this.reset()} />
       </div> 
     );
   }
