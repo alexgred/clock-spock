@@ -21,6 +21,7 @@ interface IStopwatchState {
 
 class Stopwatch extends Component<Object, IStopwatchState> {
   private intervalId?: number;
+  // private asd: (str: Array<IStopwatchNote>) => void = this.updateNotes.bind(this);
 
   constructor(props: Object) {
     super(props);
@@ -32,7 +33,7 @@ class Stopwatch extends Component<Object, IStopwatchState> {
       seconds: 0,
       status: false,
       lapNotes: []
-    };
+    }; 
   }
 
   stop(): void {
@@ -57,6 +58,8 @@ class Stopwatch extends Component<Object, IStopwatchState> {
   }
 
   reset(): void {
+    this.stop();
+
     this.setState({
       time: 0,
       hours: 0,
@@ -81,6 +84,15 @@ class Stopwatch extends Component<Object, IStopwatchState> {
     });
   }
 
+  updateNotes(newNotes: Array<IStopwatchNote>): void {
+
+    console.log(newNotes);
+    
+    this.setState({ lapNotes: newNotes });
+
+    console.log('!!!');
+  }
+
   componentWillUnmount() {
     this.stop();
   }
@@ -95,7 +107,7 @@ class Stopwatch extends Component<Object, IStopwatchState> {
         <Button buttonType={status ? 'pause' : 'start'} onClick={() => status ? this.stop() : this.start()} />
         <Button buttonType="reset" onClick={() => this.reset()} />
 
-        {lapNotes.length > 0 && <LapNote notes={lapNotes}  /> }
+        {lapNotes.length > 0 && <LapNote notes={lapNotes} update={(notes: Array<IStopwatchNote>) => this.updateNotes(notes)} /> }
         <Button buttonType="lap" onClick={() => this.lap()} />
       </div> 
     );
